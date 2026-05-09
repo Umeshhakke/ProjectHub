@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const projectRequestRoutes = require('./routes/projectRequest');
 
 const app = express();
 app.use(express.json());
@@ -78,6 +79,7 @@ app.get('/', (req, res) => {
   res.send('MongoDB Backend is working!');
 });
 
+app.use('/api/project-requests', projectRequestRoutes);
 /* =======================
    🚀 Start Server
 ======================= */
