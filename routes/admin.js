@@ -157,4 +157,19 @@ router.put('/order/:id', adminMiddleware, async (req, res) => {
   }
 });
 
+// GET /admin/unread-count
+router.get('/unread-count', async (req, res) => {
+  const unreadRequests = await ProjectRequest.countDocuments({ read: false });
+  res.json({ unreadRequests });
+});
+// PUT /project-requests/admin/:id/mark-read
+router.put('/admin/:id/mark-read', async (req, res) => {
+  const request = await ProjectRequest.findByIdAndUpdate(
+    req.params.id,
+    { read: true },
+    { new: true }
+  );
+  res.json(request);
+});
+
 module.exports = router;

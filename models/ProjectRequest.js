@@ -26,7 +26,7 @@ const projectRequestSchema = new mongoose.Schema({
   // For negotiation
   adminPrice: { type: Number, default: null },      // counter‑price from admin
   adminNotes: { type: String, default: '' },        // optional message for user
-
+  read: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },
 });
 
